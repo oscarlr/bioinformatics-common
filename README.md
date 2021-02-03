@@ -27,3 +27,8 @@ sh get_snps_from_long_reads.sh <inputs>
 ```
 python summarize_bam.py <bam>
 ```
+
+## Calculate n50
+```
+python n50.py <fai> <genome size>
+```
