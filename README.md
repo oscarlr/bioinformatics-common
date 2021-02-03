@@ -12,3 +12,8 @@ sh map_minimap2_ont.sh  <inputs>
 sh map_minimap2_pacb.sh <inputs>
 sh map_blasr.sh <inputs>
 ```
+
+## Call SNPs using long reads
+```
+sh get_snps_from_long_reads.sh <inputs>
+```
