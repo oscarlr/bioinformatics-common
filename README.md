@@ -5,6 +5,8 @@ Scripts useful for across projects
 ```
 sh create_ref_index.sh <inputs>
 ```
+## Turning PacBio BAM raw data to FASTQ files
+https://github.com/PacificBiosciences/bam2fastx
 
 ## Align reads to reference
 ```
