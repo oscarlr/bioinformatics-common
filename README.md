@@ -1,7 +1,7 @@
 # bioinformatics-common
 Scripts useful for across projects
 
-## Index reference for minimap2 and blasr
+## Index reference for pbmm2, minimap2 and blasr
 ```
 sh create_ref_index.sh <inputs>
 ```
