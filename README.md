@@ -9,6 +9,8 @@ sh create_ref_index.sh <inputs>
 https://github.com/PacificBiosciences/bam2fastx
 
 ## Align reads to reference
+These are all different aligners and methods to align either pacbio or ont reads. pbmm2 is always preferable for pacbio data, minimap2 for ONT data and BLASR for assemblies. BLASR takes much longer but it is sometimes more accureate and creates less soft-clipped sequenced. I always run minimap2 or pbmm2 first and if need to, run BLASR second.
+
 ```
 sh map_minimap2_ont.sh  <inputs>
 sh map_minimap2_pacb.sh <inputs>
