@@ -19,3 +19,8 @@ sh map_blasr.sh <inputs>
 ```
 sh get_snps_from_long_reads.sh <inputs>
 ```
+
+## Get stats on raw PacBio BAM file
+```
+python summarize_bam.py <bam>
+```
