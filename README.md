@@ -14,6 +14,7 @@ sh map_minimap2_ont.sh  <inputs>
 sh map_minimap2_pacb.sh <inputs>
 sh map_blasr.sh <inputs>
 ```
+https://github.com/PacificBiosciences/pbmm2
 
 ## Call SNPs using long reads
 ```
