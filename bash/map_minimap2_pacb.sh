@@ -4,26 +4,29 @@ set -e -x
 module load samtools
 
 fastq=${1}
-outdir=${2}
+prefix=${2}
 reffn=${3}
 sample=${4}
 threads=${5}
 
 #reffn=/sc/arion/projects/sharpa01a/rodrio10/databases/references/hg38/hg38_chr_igh/minimap2_ont_index/ref.mmi
 
-mkdir -p ${outdir}/tmp
+#mkdir -p ${outdir}/tmp
 
 
 /sc/arion/projects/sharpa01a/rodrio10/tools/minimap2/minimap2 \
-    -t ${index} -L -a -x map-pb \
+    -t ${threads} -L -a -x map-pb \
     -R "@RG\tID:${sample}\tSM:${sample}" \
     ${reffn} \
-    ${fastq} \
-    | samtools sort -@ ${index} \
-	       -T ${outdir}/tmp \
-	       -o ${outdir}/aln.sorted.bam
+    ${fastq}  > ${prefix}.sam
 
-samtools index 	${outdir}/aln.sorted.bam
+samtools view -Sbh ${prefix}.sam > ${prefix}.bam
 
-rm -fr ${outdir}/tmp
+samtools sort -@ ${threads} \
+	 ${prefix}.bam \
+	 -o ${prefix}.sorted.bam
+
+samtools index ${prefix}.sorted.bam
+
+#rm -fr ${outdir}/tmp
 #rm -f ${fastq_gz}
