@@ -7,7 +7,11 @@ outbamfile = sys.argv[2]
 read_group = sys.argv[3]
 
 insamfile = pysam.AlignmentFile(inbamfile,'rb')
-outsamfile = pysam.AlignmentFile(outbamfile,'wb',template=insamfile)
+
+header = dict(insamfile.header)
+header['RG'] = [{'ID': read_group, 'SM': read_group}]
+
+outsamfile = pysam.AlignmentFile(outbamfile,'wb',header=header)
 
 def add_read_group(read,read_group):
     read_tags = read.get_tags()
@@ -27,7 +31,7 @@ for read in insamfile.fetch():
         continue
     if read.is_supplementary:
         continue
-    out_read = add_read_group(read,readgroup)
+    out_read = add_read_group(read,read_group)
     outsamfile.write(out_read)
 
 insamfile.close()
